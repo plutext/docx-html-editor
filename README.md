@@ -47,6 +47,7 @@ Visit the upload page in your web browser
 
 	/docx-html-editor/
 
+There's a bit more doco at https://github.com/plutext/docx-html-editor/blob/master/documentation/user/docx-html-editor_UserManual.docx?raw=true
 
 Developing
 ==========
