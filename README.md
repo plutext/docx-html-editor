@@ -11,7 +11,7 @@ Exotic Word features are not supported.
 
 Interested docx4j community members are welcome to improve it and offer pull requests.
 
-docx4j-web-editor is licensed under the AGPLv3.  This means you have to publish any changes you make. 
+docx-html-editor is licensed under the AGPLv3.  This means you have to publish any changes you make. 
 
 How it works
 ============
