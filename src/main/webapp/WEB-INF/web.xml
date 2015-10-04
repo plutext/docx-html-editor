@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+    <display-name>docx4j-web-editor</display-name>
+    
+    <!--  Store any app specific config here
+          See also http://stackoverflow.com/questions/17324075/get-configuration-data-from-web-xml-when-using-a-jersey-servletcontainer 
+		  <context-param>
+		    <description>This is a context parameter example</description>
+		    <param-name>ContextParam</param-name>
+		    <param-value>ContextParam value</param-value>
+		  </context-param>    
+ 	-->
+ 
+ 	<!--  JAX-RS 2.0
+ 	      See https://github.com/aruld/jersey2-multipart-sample
+ 	      http://stackoverflow.com/questions/14288856/jersey-2-injection-source  -->
+	<servlet>
+		<servlet-name>services</servlet-name>
+			<servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+			<!-- 1.0 was 
+	 		<servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+	 		 -->
+		<init-param>
+			<param-name>javax.ws.rs.Application</param-name>
+			<param-value>org.plutext.htmleditor.JAXRS2Application</param-value>
+	        <!-- 1.0 was 
+			<param-name>com.sun.jersey.config.property.packages</param-name> -->
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+<!--  Uncomment for CMIS support	
+	<servlet>
+		<servlet-name>browse</servlet-name>
+		<servlet-class>org.apache.chemistry.opencmis.browser.BrowseServlet</servlet-class>
+		<init-param>
+			<param-name>auxroot</param-name>
+			<param-value>{ctx}/browser/</param-value>
+		</init-param>
+		<init-param>
+			<param-name>allow</param-name>
+			<param-value>http.*</param-value>
+		</init-param>
+		<init-param>
+			<param-name>stylesheet:application/atomsvc+xml</param-name>
+			<param-value>/WEB-INF/stylesheets/service.xsl</param-value>
+		</init-param>
+		<init-param>
+			<param-name>stylesheet:application/atom+xml;type=feed</param-name>
+			<param-value>/WEB-INF/stylesheets/feed.xsl</param-value>
+		</init-param>
+		<init-param>
+			<param-name>stylesheet:application/cmistree+xml</param-name>
+			<param-value>/WEB-INF/stylesheets/feed.xsl</param-value>
+		</init-param>
+		<init-param>
+			<param-name>stylesheet:application/atom+xml;type=entry</param-name>
+			<param-value>/WEB-INF/stylesheets/entry.xsl</param-value>
+		</init-param>
+		<init-param>
+			<param-name>stylesheet:application/cmisallowableactions+xml</param-name>
+			<param-value>/WEB-INF/stylesheets/actions.xsl</param-value>
+		</init-param>
+		<init-param>
+			<param-name>stylesheet:application/cmisacl+xml</param-name>
+			<param-value>/WEB-INF/stylesheets/acl.xsl</param-value>
+		</init-param>
+		<init-param>
+			<param-name>override-stylesheet:renditions</param-name>
+			<param-value>/WEB-INF/stylesheets/renditions.xsl</param-value>
+		</init-param>
+		<init-param>
+			<param-name>override-stylesheet:relationships</param-name>
+			<param-value>/WEB-INF/stylesheets/relationships.xsl</param-value>
+		</init-param>
+		<init-param>
+			<param-name>override-stylesheet:thumbnails</param-name>
+			<param-value>/WEB-INF/stylesheets/thumbnails.xsl</param-value>
+		</init-param>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>browse</servlet-name>
+		<url-pattern>/browse</url-pattern>
+	</servlet-mapping>
+	
+   -->
+
+		
+	<servlet-mapping>
+		<servlet-name>services</servlet-name>
+		<url-pattern>/services/*</url-pattern>
+	</servlet-mapping>
+
+</web-app>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.plutext</groupId>
+	<artifactId>docx-html-editor</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+    <packaging>war</packaging>
+
+	<name>docx-html-editor</name>
+	<description>
+		demo of editing a docx in a web browser using CKEditor via XHTML round trip
+	</description>
+	<url>http://www.docx4java.org/</url>
+	<prerequisites />
+	<inceptionYear>2013</inceptionYear>
+	<developers>
+		<developer>
+			<id>jharrop</id>
+			<name>Jason Harrop</name>
+			<email>jason@plutext.org</email>
+			<organization>Plutext</organization>
+			<roles>
+				<role>Developer</role>
+			</roles>
+			<timezone>+10</timezone>
+		</developer>
+	</developers>
+	<build>
+		<sourceDirectory>src/main/java</sourceDirectory>
+		<testSourceDirectory>src/test/java</testSourceDirectory>
+		<outputDirectory>bin</outputDirectory>
+		<testOutputDirectory>bin</testOutputDirectory>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId> 
+				<version>2.0-beta-1</version>
+				<configuration>
+					<server>tomcat-localhost</server>
+					<url>http://localhost/manager/text</url> 
+				</configuration>
+			        <!--  To use this, first install Tomcat 7. 
+			        	  Configure username and password in Maven settings.xml, and tomcat-users.xml
+			        	  See further the README.txt file			        	   			        
+			         -->
+			</plugin>
+			
+			
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.2</version>
+				<configuration>
+					<archiveClasses>true</archiveClasses>
+					<webXml>src/main/webapp/WEB-INF/web.xml</webXml>
+				</configuration>
+            </plugin>			
+		
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+					<verbose>false</verbose>
+					<!--<maxmemory>512m</maxmemory>  -->
+					<!-- try to help maven to find package com.sun.xml.internal.bind.marshaller: 
+		               <bootclasspath>${java.home}/lib/rt.jar</bootclasspath>
+		               but this doesn't help
+		            -->
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.0</version>
+			</plugin>
+		</plugins>
+		<resources>
+			<!-- be sure to get xml,xlst resources in various src trees -->
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.xslt</include>
+				</includes>
+			</resource>
+		</resources>		
+	</build>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>org.docx4j</groupId>
+			<artifactId>docx4j</artifactId>
+			<version>3.2.2</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.docx4j</groupId>
+			<artifactId>docx4j-ImportXHTML</artifactId>
+			<version>3.0.0-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<version>1.6.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.chemistry.opencmis</groupId>
+			<artifactId>chemistry-opencmis-client-impl</artifactId>
+			<version>0.9.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.glassfish.jersey.core</groupId>
+			<artifactId>jersey-server</artifactId>
+			<version>2.1</version>
+		</dependency>
+		<!--<version>2.0-m13-3</version>-->
+
+		<dependency>
+			<groupId>org.glassfish.jersey.containers</groupId>
+			<artifactId>jersey-container-servlet-core</artifactId>
+			<version>2.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.glassfish.jersey.media</groupId>
+			<artifactId>jersey-media-multipart</artifactId>
+			<version>2.1</version>
+		</dependency>
+
+	<dependency>
+		<groupId>org.capaxit.textimage</groupId>
+		<artifactId>TextImageGen</artifactId>
+		<version>2.0-SNAPSHOT</version>
+	</dependency>
+
+	</dependencies>
+	
+</project>

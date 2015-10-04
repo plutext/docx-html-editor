@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+	xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">
+<head>
+
+<title>docx html editor - file upload form</title>
+
+<style>
+<!-- /*paged media */
+div.header {
+	display: none
+}
+
+div.footer {
+	display: none
+} /*@media print { */
+@page {
+	size: A4;
+	margin: 10%;
+	@
+	top-center
+	{
+	content
+	:
+	element(
+	header
+	)
+}
+
+@
+bottom-center {
+	content: element(footer)
+}
+
+}
+
+/*font definitions*/
+
+/*element styles*/
+del {
+	text-decoration: line-through;
+	color: red;
+}
+
+ins {
+	text-decoration: none;
+}
+
+/* Word style definitions */
+
+/* PARAGRAPH STYLES */
+.DocDefaults {
+	display: block;
+	space-after: 4mm;
+	line-height: 115%;
+	font-family: Calibri;
+	font-size: 11.0pt;
+}
+
+.Normal {
+	display: block;
+}
+
+.Heading1 {
+	display: block;
+	page-break-after: avoid;
+	space-before: 0.33in;
+	space-after: 0in;
+	font-weight: bold;
+	color: #365F91;
+	font-family: Calibri;
+	font-size: 14.0pt;
+}
+
+.ListParagraph {
+	display: block;
+	position: relative;
+	margin-left: 0.5in;
+}
+
+.Heading3 {
+	display: block;
+	page-break-after: avoid;
+	space-before: 4mm;
+	space-after: 0in;
+	font-weight: bold;
+	color: #4F81BD;
+	font-family: Calibri;
+}
+
+.Heading2 {
+	display: block;
+	page-break-after: avoid;
+	space-before: 4mm;
+	space-after: 0in;
+	font-weight: bold;
+	color: #4F81BD;
+	font-family: Calibri;
+	font-size: 13.0pt;
+}
+
+/* CHARACTER STYLES */
+
+.DefaultParagraphFont {
+	display: inline;
+}
+
+.Hyperlink {
+	display: inline;
+	color: #0000FF;
+	text-decoration: none;
+}
+
+.apple-style-span {
+	display: inline;
+}
+
+
+-->
+</style>
+
+</head>
+<body>
+
+
+	<div class="document">
+
+		<p class="Heading1 Normal DocDefaults ">Test your document</p>
+
+
+		<form id="fileForm" action="services/load" method="POST"
+			enctype="multipart/form-data">
+			<p>
+				Choose file to upload: <input type="file" id="docxfile"
+					name="docxfile"
+					onchange="var thisform = document.getElementById('fileForm'); var filename = thisform.docxfile.value; 
+		im = new Array(); 
+		im['docx'] = 'Text'; 
+		im['docm'] = 'Text'; 
+		im['dotx'] = 'Text'; 
+		im['dotm'] = 'Text'; 
+		im['xml'] = 'Text'; 
+	    var dot = filename.lastIndexOf('.'); 
+	    if (dot != -1) { 
+	       var ext = filename.substr(dot + 1).toLowerCase(); 
+			var family = im[ext]; 
+			if (family == undefined) { 
+		    	alert('Sorry, but importing of '+ ext + ' is not supported'); 
+				thisform.reset();
+			} else {
+				thisform.submit(); 
+			} 
+		} else { 
+		    	alert('What sort of document is this?'); 
+				thisform.reset();
+		} " />
+			</p>
+
+			<p>
+				<input type="checkbox" name="adv" value="bare">Return bare
+					HTML only (ie no editor)</input>
+			</p>
+		</form>
+		</p>
+
+
+	</div>
+
+</body>
+</html>
