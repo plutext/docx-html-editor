@@ -37,6 +37,22 @@ Pre-reqs: Since we don't distribute a binary, you'll need maven to build from so
 Get CKeditor (v3.6.6.1); unzip it to src/main/webapp/ckeditor 
 (so you have src/main/webapp/ckeditor/ckeditor.js etc)
 
+Before build the war:
+
+Download https://github.com/jcraane/textimagegenerator
+
+(May be correct name in pom.xml from "SNAAPSHOT" to "SNAPSHOT")
+
+Build jar:
+     
+     mvn install
+
+Install textimagegen jar to local-maven-rep:
+     
+     mvn install:install-file -Dfile=target\TextImageGen-2.0-SNAPSHOT.jar -DpomFile=pom.xml
+
+Go to docx-html-editor.
+
 Build the war:
   
      mvn install
