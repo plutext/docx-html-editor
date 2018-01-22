@@ -4,7 +4,8 @@ docx-html-editor
 A proof of concept (JAX-RS 2.0) to show how a web-based HTML rich text editors (eg CkEditor) can be 
 used to edit docx files (via XHTML round trip).
 
-We've published this as a "cheap and cheerful" option only; in 2016, Plutext will be introducing a better web editor, using the layout engine behind our commercial PDF Converter offering.
+We've published this as a "cheap and cheerful" option only; for a commercial grade solution (new in 2018), please see 
+https://nativedocuments.com/ (which takes a completely different approach).
 
 That said, it should work OK for documents containing text, tables, and images.
 Exotic Word features are not supported.
